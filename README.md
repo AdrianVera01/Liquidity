@@ -47,7 +47,7 @@ flowchart TD
 
 ## 📋 Macro 1 (Main Pipeline)
 
-File: `Macro1.mac`
+File: 'Macro1.mac'
 
 ```mermaid
 flowchart TD
