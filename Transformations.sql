@@ -1,12 +1,12 @@
--- File: C:\Users\adria\Downloads\converted_sqlserver_queries\_C_\Users\0_a000_LCR_account_Mapping_SQLServer.sql
--- Converted from: "C:\Users ...\0_a000_LCR_account_Mapping.sql
--- NOTE: Automated best-effort conversion from Access to SQL Server.
+-- File: C:\Users\adria\Downloads\converted_sqlserver_queries\_C_\Users\0_raw.a000_LCR_Account_Mapping_SQLServer.sql
+-- Converted from: "C:\Users ...\0_raw.a000_LCR_Account_Mapping.sql
+-- NOTE: Automated best-effort conversion from Access to SQL Server.raw.yyy_30_BBVA_Financial_Statement_Additional
 -- Please review especially WHERE clauses, joins, and date/boolean logic.
 
 
-SELECT a000_LCR_Account_Mapping.Sequence, a000_LCR_Account_Mapping.LCR_account, a000_LCR_Account_Mapping.[Group 2], a000_LCR_Account_Mapping.[Product Number], a000_LCR_Account_Mapping.[Is_Product Number_23000_23004], a000_LCR_Account_Mapping.contract, a000_LCR_Account_Mapping.KeyA, a000_LCR_Account_Mapping.Any_Match, a000_LCR_Account_Mapping.Sorgu_Final
-FROM a000_LCR_Account_Mapping
-ORDER BY a000_LCR_Account_Mapping.Sequence;
+SELECT raw.a000_LCR_Account_Mapping.Sequence, raw.a000_LCR_Account_Mapping.LCR_account, raw.a000_LCR_Account_Mapping.[Group_2], raw.a000_LCR_Account_Mapping.[Product Number], raw.a000_LCR_Account_Mapping.[Is_Product Number_23000_23004], raw.a000_LCR_Account_Mapping.contract, raw.a000_LCR_Account_Mapping.KeyA, raw.a000_LCR_Account_Mapping.Any_Match, raw.a000_LCR_Account_Mapping.Sorgu_Final
+FROM raw.a000_LCR_Account_Mapping
+ORDER BY raw.a000_LCR_Account_Mapping.Sequence;
 
 
 -- File: C:\Users\adria\Downloads\converted_sqlserver_queries\_C_\Users\00100_a_Overwrite_Keys_SQLServer.sql
@@ -14,8 +14,8 @@ ORDER BY a000_LCR_Account_Mapping.Sequence;
 -- NOTE: Automated best-effort conversion from Access to SQL Server.
 -- Please review especially WHERE clauses, joins, and date/boolean logic.
 
-UPDATE yyy_30_BBVA_Financial_Statement_Additional SET yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account = Null
-WHERE (((yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account) Is Not Null));
+UPDATE raw.yyy_30_BBVA_Financial_Statement_Additional SET raw.yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account = Null
+WHERE (((raw.yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account) Is Not Null));
 
 
 -- File: C:\Users\adria\Downloads\converted_sqlserver_queries\_C_\Users\00110_a_Update_Lookup_First_Mapping_SQLServer.sql
@@ -23,7 +23,7 @@ WHERE (((yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account) Is No
 -- NOTE: Automated best-effort conversion from Access to SQL Server.
 -- Please review especially WHERE clauses, joins, and date/boolean logic.
 
-UPDATE a000_LCR_Account_Mapping SET a000_LCR_Account_Mapping.KeyA = (CASE WHEN [Group 2] Is Null THEN "*" ELSE [Group 2] END) + "_" + (CASE WHEN [Is_Product Number_21095_21096] Is Null THEN "*" ELSE [Is_Product Number_21095_21096] END) + "_" + (CASE WHEN [Product Number] Is Null THEN "*" ELSE [Product Number] END) + "_" + (CASE WHEN [Is_Product Number_23000_23004] Is Null THEN "*" ELSE [Is_Product Number_23000_23004] END) + "_" + (CASE WHEN [contract] Is Null THEN "*" ELSE [contract] END), a000_LCR_Account_Mapping.Sorgu_Final = Null, a000_LCR_Account_Mapping.Any_Match = Null;
+UPDATE raw.a000_LCR_Account_Mapping SET raw.a000_LCR_Account_Mapping.KeyA = (CASE WHEN [Group_2] Is Null THEN "*" ELSE [Group_2] END) + "_" + (CASE WHEN [Is_Product_Number_21095_21096] Is Null THEN "*" ELSE [Is_Product_Number_21095_21096] END) + "_" + (CASE WHEN [Product Number] Is Null THEN "*" ELSE [Product Number] END) + "_" + (CASE WHEN [Is_Product Number_23000_23004] Is Null THEN "*" ELSE [Is_Product Number_23000_23004] END) + "_" + (CASE WHEN [contract] Is Null THEN "*" ELSE [contract] END), raw.a000_LCR_Account_Mapping.Sorgu_Final = Null, raw.a000_LCR_Account_Mapping.Any_Match = Null;
 
 
 -- File: C:\Users\adria\Downloads\converted_sqlserver_queries\_C_\Users\00200_a_Mother_Data_First_Mapping_SQLServer.sql
@@ -79,7 +79,7 @@ GROUP BY yy_10_a_Mother_Data_First_Mapping.Keyb, yy_10_a_Mother_Data_First_Mappi
 -- NOTE: Automated best-effort conversion from Access to SQL Server.
 -- Please review especially WHERE clauses, joins, and date/boolean logic.
 
-UPDATE yyy_30_BBVA_Financial_Statement_Additional INNER JOIN ((yyy_30_BBVA_Financial_Statement INNER JOIN yy_10_a_Mother_Data_First_Mapping ON yyy_30_BBVA_Financial_Statement.[BBVA_Sequence Distinct] = yy_10_a_Mother_Data_First_Mapping.DATA_SequenceB) INNER JOIN yy_10_b_Distinct_Mother_Data_First_Mapping ON yy_10_a_Mother_Data_First_Mapping.Keyb = yy_10_b_Distinct_Mother_Data_First_Mapping.KeyC) ON yyy_30_BBVA_Financial_Statement_Additional.[BBVA_Sequence Distinct] = yyy_30_BBVA_Financial_Statement.[BBVA_Sequence Distinct] SET yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account = [LCR_account_C]
+UPDATE raw.yyy_30_BBVA_Financial_Statement_Additional INNER JOIN ((yyy_30_BBVA_Financial_Statement INNER JOIN yy_10_a_Mother_Data_First_Mapping ON yyy_30_BBVA_Financial_Statement.[BBVA_Sequence Distinct] = yy_10_a_Mother_Data_First_Mapping.DATA_SequenceB) INNER JOIN yy_10_b_Distinct_Mother_Data_First_Mapping ON yy_10_a_Mother_Data_First_Mapping.Keyb = yy_10_b_Distinct_Mother_Data_First_Mapping.KeyC) ON raw.yyy_30_BBVA_Financial_Statement_Additional.[BBVA_Sequence Distinct] = yyy_30_BBVA_Financial_Statement.[BBVA_Sequence Distinct] SET raw.yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account = [LCR_account_C]
 WHERE (((yy_10_b_Distinct_Mother_Data_First_Mapping.LCR_account_C) Is Not Null));
 
 
@@ -98,10 +98,10 @@ FROM yyy_90_LCR_DATA;
 -- Please review especially WHERE clauses, joins, and date/boolean logic.
 
 INSERT INTO yyy_90_LCR_DATA ( period, entity_code, [Related Breakdown Number], Chart, Account, currencyaa, country, [counterparty country], intercompany_codea, ITEM, ITEM_CODE, Link, Amount1, Amount2, Amount3, Amount4, Amount5, Amount6, Amount7, Amount8, Amount9, Amount10, Amount11, Amount12, Amount13, Amount14, Amount15, Amount16, Amount17, Amount18 )
-SELECT Year([date]) + FORMAT(Month([date]), '00') AS period, 70501 AS entity_code, "000001" AS [Related Breakdown Number], "M8" AS Chart, yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account AS Account, IIf([Currency] In ("EUR","USD","TRY","MXN","GBP"),[Currency],"RES") AS currencyaa, String(2," ") AS country, String(2," ") AS [counterparty country], IIf([intercompany_code] Is Null,String(5," "),[intercompany_code]) AS intercompany_codea, (CASE WHEN [Maturity Date] Is Not Null Or [contract]="Card no. 8904" THEN 'VCT2' ELSE String(4," " END)) AS ITEM, IIf([contract]="Card no. 8904","0003" + String(16," "),IIf([Maturity Date] Is Null,String(20," "),IIf([Maturity Date]-[Date]<=184,'0001' + String(16," "),IIf([Maturity Date]-[Date]<=365,'0002' + String(16," "),IIf([Maturity Date]-[Date]>365,'0003' + String(16," ")))))) AS ITEM_CODE, String(11,"0") AS Link, 0 AS Amount1, Sum(IIf([FINREP Sector] In ("GG"),1,0)*[Principle (Eur)]) AS Amount2, Sum(IIf([FINREP Sector] In ("CI"),1,0)*[Principle (Eur)]) AS Amount3, 0 AS Amount4, 0 AS Amount5, 0 AS Amount6, 0 AS Amount7, Sum(IIf([FINREP Sector] In ("OFC"),1,0)*[Principle (Eur)]) AS Amount8, 0 AS Amount9, Sum(IIf([FINREP Sector] In ("NFC"),1,0)*IIf([Industry Number] Is Null Or [Industry Number] Not In ("2500"),1,0)*[Principle (Eur)]) AS Amount10, 0 AS Amount11, Sum(IIf([FINREP Sector] In ("NFC"),1,0)*IIf([Industry Number] In ("2500"),1,0)*[Principle (Eur)]) AS Amount12, Sum(IIf([FINREP Sector] In ("Households"),1,0)*[Principle (Eur)]) AS Amount13, 0 AS Amount14, 0 AS Amount15, 0 AS Amount16, 0 AS Amount17, 0 AS Amount18
-FROM yyy_30_BBVA_Financial_Statement INNER JOIN yyy_30_BBVA_Financial_Statement_Additional ON yyy_30_BBVA_Financial_Statement.[BBVA_Sequence Distinct] = yyy_30_BBVA_Financial_Statement_Additional.[BBVA_Sequence Distinct]
-WHERE (((yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account) Is Not Null))
-GROUP BY Year([date]) + FORMAT(Month([date]), '00'), yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account, IIf([Currency] In ("EUR","USD","TRY","MXN","GBP"),[Currency],"RES"), IIf([intercompany_code] Is Null,String(5," "),[intercompany_code]), (CASE WHEN [Maturity Date] Is Not Null Or [contract]="Card no. 8904" THEN 'VCT2' ELSE String(4," " END)), IIf([contract]="Card no. 8904","0003" + String(16," "),IIf([Maturity Date] Is Null,String(20," "),IIf([Maturity Date]-[Date]<=184,'0001' + String(16," "),IIf([Maturity Date]-[Date]<=365,'0002' + String(16," "),IIf([Maturity Date]-[Date]>365,'0003' + String(16," "))))));
+SELECT Year([date]) + FORMAT(Month([date]), '00') AS period, 70501 AS entity_code, "000001" AS [Related Breakdown Number], "M8" AS Chart, raw.yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account AS Account, IIf([Currency] In ("EUR","USD","TRY","MXN","GBP"),[Currency],"RES") AS currencyaa, String(2," ") AS country, String(2," ") AS [counterparty country], IIf([intercompany_code] Is Null,String(5," "),[intercompany_code]) AS intercompany_codea, (CASE WHEN [Maturity Date] Is Not Null Or [contract]="Card no. 8904" THEN 'VCT2' ELSE String(4," " END)) AS ITEM, IIf([contract]="Card no. 8904","0003" + String(16," "),IIf([Maturity Date] Is Null,String(20," "),IIf([Maturity Date]-[Date]<=184,'0001' + String(16," "),IIf([Maturity Date]-[Date]<=365,'0002' + String(16," "),IIf([Maturity Date]-[Date]>365,'0003' + String(16," ")))))) AS ITEM_CODE, String(11,"0") AS Link, 0 AS Amount1, Sum(IIf([FINREP Sector] In ("GG"),1,0)*[Principle (Eur)]) AS Amount2, Sum(IIf([FINREP Sector] In ("CI"),1,0)*[Principle (Eur)]) AS Amount3, 0 AS Amount4, 0 AS Amount5, 0 AS Amount6, 0 AS Amount7, Sum(IIf([FINREP Sector] In ("OFC"),1,0)*[Principle (Eur)]) AS Amount8, 0 AS Amount9, Sum(IIf([FINREP Sector] In ("NFC"),1,0)*IIf([Industry Number] Is Null Or [Industry Number] Not In ("2500"),1,0)*[Principle (Eur)]) AS Amount10, 0 AS Amount11, Sum(IIf([FINREP Sector] In ("NFC"),1,0)*IIf([Industry Number] In ("2500"),1,0)*[Principle (Eur)]) AS Amount12, Sum(IIf([FINREP Sector] In ("Households"),1,0)*[Principle (Eur)]) AS Amount13, 0 AS Amount14, 0 AS Amount15, 0 AS Amount16, 0 AS Amount17, 0 AS Amount18
+FROM yyy_30_BBVA_Financial_Statement INNER JOIN raw.yyy_30_BBVA_Financial_Statement_Additional ON yyy_30_BBVA_Financial_Statement.[BBVA_Sequence Distinct] = raw.yyy_30_BBVA_Financial_Statement_Additional.[BBVA_Sequence Distinct]
+WHERE (((raw.yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account) Is Not Null))
+GROUP BY Year([date]) + FORMAT(Month([date]), '00'), raw.yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account, IIf([Currency] In ("EUR","USD","TRY","MXN","GBP"),[Currency],"RES"), IIf([intercompany_code] Is Null,String(5," "),[intercompany_code]), (CASE WHEN [Maturity Date] Is Not Null Or [contract]="Card no. 8904" THEN 'VCT2' ELSE String(4," " END)), IIf([contract]="Card no. 8904","0003" + String(16," "),IIf([Maturity Date] Is Null,String(20," "),IIf([Maturity Date]-[Date]<=184,'0001' + String(16," "),IIf([Maturity Date]-[Date]<=365,'0002' + String(16," "),IIf([Maturity Date]-[Date]>365,'0003' + String(16," "))))));
 
 
 -- File: C:\Users\adria\Downloads\converted_sqlserver_queries\_C_\Users\00750_c_yyy_90_LCR_DATA_Totals_SQLServer.sql
