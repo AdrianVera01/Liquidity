@@ -49,8 +49,8 @@ FROM yyy_30_BBVA_Financial_Statement;
 -- NOTE: Automated best-effort conversion from Access to SQL Server.
 -- Please review especially WHERE clauses, joins, and date/boolean logic.
 
-INSERT INTO yy_10_a_Mother_Data_First_Mapping ( DATA_SequenceB, Keyb, Group2_B, [Is_Product Number_21095_21096_B], [Product Number_B], [Is_Product Number_23000_23004_B], Contract_B )
-SELECT [00200_b_Mother_Data_First_Mapping].[BBVA_Sequence Distinct], [Group2_B] + "_" + [Is_Product Number_21095_21096_B] + "_" + [Product Number_B] + "_" + [Is_Product Number_23000_23004_B] + "_" + [Contract_B] AS Keyb, [00200_b_Mother_Data_First_Mapping].Group2_B, [00200_b_Mother_Data_First_Mapping].[Is_Product Number_21095_21096_B], [00200_b_Mother_Data_First_Mapping].[Product Number_B], [00200_b_Mother_Data_First_Mapping].[Is_Product Number_23000_23004_B], [00200_b_Mother_Data_First_Mapping].Contract_B
+INSERT INTO yy_10_a_Mother_Data_First_Mapping ( DATA_SequenceB, Keyb, Group2_B, [Is_Product_Number_21095_21096_B], [Product_Number_B], [Is_Product_Number_23000_23004_B], Contract_B )
+SELECT [00200_b_Mother_Data_First_Mapping].[BBVA_Sequence Distinct], [Group2_B] + "_" + [Is_Product_Number_21095_21096_B] + "_" + [Product_Number_B] + "_" + [Is_Product_Number_23000_23004_B] + "_" + [Contract_B] AS Keyb, [00200_b_Mother_Data_First_Mapping].Group2_B, [00200_b_Mother_Data_First_Mapping].[Is_Product_Number_21095_21096_B], [00200_b_Mother_Data_First_Mapping].[Product_Number_B], [00200_b_Mother_Data_First_Mapping].[Is_Product_Number_23000_23004_B], [00200_b_Mother_Data_First_Mapping].Contract_B
 FROM 00200_b_Mother_Data_First_Mapping;
 
 
