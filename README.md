@@ -39,8 +39,4 @@ flowchart TD
 ---
 
 ## 📊 Summary
-
-- **Macro1:** Full pipeline (production build).
-- **Macro1_SIL:** Simplified pipeline (testing / faster run).
-- **Final output:** `yyy_95_LCR_DATA_FINAL`.
-- **Migration flow:** Access queries/macros → SQL Server ETL → Final reports.
+``` LCR_Macro_1 ```
