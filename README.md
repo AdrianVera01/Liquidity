@@ -6,7 +6,6 @@ Description of Inputs, transformations and outputs of LCR
 
 ## 🔎 Dataflow Analysis (Inputs → Temps → Final)
 
-From `objects.csv` and `dependencies.csv`, the migration process can be broken down into three main stages:
 
 ### 1. Inputs (raw sources)
 - `00200_b_Mother_Data_First_Mapping`
@@ -37,10 +36,6 @@ flowchart TD
     S3 --> S4[00760_a_yyy_92_LCR_DATA]
     S4 --> S5[00770_b_yyy_95_LCR_DATA_FINAL]
 ```
-
-✅ **Macro1_SIL = Lite build** (skips many enrichment/cleanup steps).  
-Useful for faster rebuilds or testing.
-
 ---
 
 ## 📊 Summary
