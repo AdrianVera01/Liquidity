@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# SQL Server Management Studio Version 21
+VisualStudioVersion = 17.14.36429.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "GBI_LCR_Project", "GBI_LCR_Project\GBI_LCR_Project.ssmssqlproj", "{28FEC493-8FC6-A52A-6129-B3C25A511A32}"
+EndProject
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "GBI_Inflows_Project", "GBI_Inflows_Project\GBI_Inflows_Project.ssmssqlproj", "{664CE94A-3CEA-E9C3-C38E-37F801C152BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Default = Default|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28FEC493-8FC6-A52A-6129-B3C25A511A32}.Default|Default.ActiveCfg = Default
+		{664CE94A-3CEA-E9C3-C38E-37F801C152BC}.Default|Default.ActiveCfg = Default
+		{075E1CF8-7466-46C0-8A56-5907C73FFF58}.Default|Default.ActiveCfg = Default
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8238A765-C111-42EF-859C-68E6034CA0D6}
+	EndGlobalSection
+EndGlobal

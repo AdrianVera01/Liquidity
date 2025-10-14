@@ -1,0 +1,146 @@
+USE GBI_LCR_LIQUIDITY
+GO
+/*
+-- Kick out active sessions to the DB
+ALTER DATABASE GBI_LIQUIDITY SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+GO
+
+-- Rename the database
+ALTER DATABASE GBI_LIQUIDITY MODIFY NAME = GBI_LCR_LIQUIDITY;
+GO
+-- Put it back for everyone
+ALTER DATABASE GBI_LCR_LIQUIDITY SET MULTI_USER;
+GO
+
+CREATE SCHEMA raw
+CREATE SCHEMA work
+CREATE SCHEMA final
+*/
+
+
+
+
+ALTER TABLE raw.a000_LCR_Account_Mapping 
+ALTER COLUMN KeyA VARCHAR(50) NULL;
+
+ALTER TABLE raw.a000_LCR_Account_Mapping 
+ALTER COLUMN LCR_Account VARCHAR(50) NULL;
+
+ALTER TABLE raw.a000_LCR_Account_Mapping 
+ALTER COLUMN Product_Number VARCHAR(50) NULL;
+
+ALTER TABLE raw.a000_LCR_Account_Mapping 
+ALTER COLUMN Sorgu_Final NVARCHAR(250) NULL;
+
+ALTER TABLE raw.a000_LCR_Account_Mapping 
+ALTER COLUMN Any_Match NVARCHAR(250) NULL;
+
+
+-- Update datatype [yy_10_a_Mother_Data_First_Mapping] -- 
+ALTER TABLE raw.[yy_10_a_Mother_Data_First_Mapping]
+ALTER COLUMN DATA_SequenceB VARCHAR(50) NULL;
+
+ALTER TABLE raw.[yy_10_a_Mother_Data_First_Mapping]
+ALTER COLUMN Keyb VARCHAR(50) NULL;
+
+ALTER TABLE raw.[yy_10_a_Mother_Data_First_Mapping]
+ALTER COLUMN Group2_B VARCHAR(50) NULL;
+
+ALTER TABLE raw.[yy_10_a_Mother_Data_First_Mapping]
+ALTER COLUMN [Is_Product_Number_21095_21096_B] VARCHAR(50) NULL;
+
+ALTER TABLE raw.[yy_10_a_Mother_Data_First_Mapping]
+ALTER COLUMN [Product_Number_B] VARCHAR(50) NULL;
+
+ALTER TABLE raw.[yy_10_a_Mother_Data_First_Mapping]
+ALTER COLUMN [Is_Product_Number_23000_23004_B] VARCHAR(50) NULL;
+
+ALTER TABLE raw.[yy_10_a_Mother_Data_First_Mapping]
+ALTER COLUMN Contract_B VARCHAR(50) NULL;
+
+
+--
+ALTER TABLE raw.[yy_10_a_Mother_Data_First_Mapping]
+ALTER COLUMN Contract_B VARCHAR(50) NULL;
+
+
+
+ALTER TABLE raw.[0_a000_LCR_account_Mapping]
+ALTER COLUMN [Any_Match] VARCHAR(50) NULL;
+
+
+ALTER TABLE raw.[yy_10_b_Distinct_Mother_Data_First_Mapping]
+ALTER COLUMN [Any_Match] VARCHAR(50) NULL;
+
+
+
+ALTER TABLE [GBI_LIQUIDITY].[raw].[yyy_30_BBVA_Financial_Statement]
+ALTER COLUMN [Date] INT;
+
+UPDATE [GBI_LIQUIDITY].[raw].[yyy_30_BBVA_Financial_Statement]
+SET [Date] = 202209
+
+UPDATE [GBI_LIQUIDITY].[raw].[yyy_30_BBVA_Financial_Statement]
+SET [Date] = YEAR([Date])*100 + MONTH([Date]);
+
+
+-- Rename fields with spaces ---
+EXEC sp_rename 'raw.[yyy_30_BBVA_Financial_Statement].[Principle (Eur)]', '[Principle_(Eur)]', 'COLUMN';
+
+-- Allowing Nulls for Amounts 1 -18
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount1 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount2 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount3 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount4 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount5 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount6 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount7 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount8 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount9 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount10 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount11 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount12 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount13 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount14 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount15 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount16 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount17 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN Amount18 FLOAT NULL;
+
+ALTER TABLE raw.[yyy_92_LCR_DATA]
+ALTER COLUMN IsZero NVARCHAR(50) NULL;
