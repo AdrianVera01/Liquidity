@@ -374,21 +374,21 @@ SELECT
 
     RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount1))), 18)  AS [amount1],
     '+'                                                                                           AS [Sign_of_amount1],
-    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount2))), 18)  AS [amount 2],
+    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount2))), 18)  AS [amount2],
     '+'                                                                                           AS [Sign_of_amount2],
-    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount3))), 18)  AS [amount 3],
+    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount3))), 18)  AS [amount3],
     '+'                                                                                           AS [Sign_of_amount3],
-    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount4))), 18)  AS [amount 4],
+    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount4))), 18)  AS [amount4],
     '+'                                                                                           AS [Sign_of_amount4],
-    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount5))), 18)  AS [amount 5],
+    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount5))), 18)  AS [amount5],
     '+'                                                                                           AS [Sign_of_amount5],
-    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount6))), 18)  AS [amount 6],
+    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount6))), 18)  AS [amount6],
     '+'                                                                                           AS [Sign_of_amount6],
-    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount7))), 18)  AS [amount 7],
+    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount7))), 18)  AS [amount7],
     '+'                                                                                           AS [Sign_of_amount7],
-    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount8))), 18)  AS [amount 8],
+    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount8))), 18)  AS [amount8],
     '+'                                                                                           AS [Sign_of_amount8],
-    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount9))), 18)  AS [amount 9],
+    RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount9))), 18)  AS [amount9],
     '+'                                                                                           AS [Sign_of_amount9],
     RIGHT(REPLICATE('0',18) + CONVERT(varchar(38), CONVERT(decimal(38,0), ABS(D.Amount10))), 18) AS [amount10],
     '+'                                                                                           AS [Sign_of_amount10],
@@ -416,59 +416,10 @@ WHERE D.IsZero = 'NO';
 
 
 -- 00770_b_yyy_95_LCR_DATA_FINAL --
-DELETE FROM raw.[yyy_95_LCR_DATA_FINAL];
+DELETE FROM final.[yyy_95_LCR_DATA_FINAL];
 
 -- 00770_c_yyy_95_LCR_DATA_FINAL --
-INSERT INTO [raw].[yyy_95_LCR_DATA_FINAL](
-    [period],
-    entity_code,
-    [Related_Breakdown_Number],
-    Chart,
-    Account,
-    currencyaa,
-    country,
-    [counterparty_country],
-    intercompany_codea,
-    ITEM,
-    ITEM_CODE,
-    Link,
-    [amount1],
-    [Sign_of_amount1],
-    [amount 2],
-    [Sign_of_amount2],
-    [amount 3],
-    [Sign_of_amount3],
-    [amount 4],
-    [Sign_of_amount4],
-    [amount 5],
-    [Sign_of_amount5],
-    [amount 6],
-    [Sign_of_amount6],
-    [amount 7],
-    [Sign_of_amount7],
-    [amount 8],
-    [Sign_of_amount8],
-    [amount 9],
-    [Sign_of_amount9],
-    [amount10],
-    [Sign_of_amount10],
-    [amount11],
-    [Sign_of_amount11],
-    [amount12],
-    [Sign_of_amount12],
-    [amount13],
-    [Sign_of_amount13],
-    [amount14],
-    [Sign_of_amount14],
-    [amount15],
-    [Sign_of_amount15],
-    [amount16],
-    [Sign_of_amount16],
-    [amount17],
-    [Sign_of_amount17],
-    [amount18],
-    [Sign_of_amount18],
-    [Breakdown Description])
+/* The INSERT INTO was changed for SELEC INTO, because It showed a Error */
 SELECT
     S.[period],
     S.entity_code,
@@ -484,21 +435,21 @@ SELECT
     S.Link,
     S.[amount1],
     S.[Sign_of_amount1],
-    S.[amount 2],
+    S.[amount2],
     S.[Sign_of_amount2],
-    S.[amount 3],
+    S.[amount3],
     S.[Sign_of_amount3],
-    S.[amount 4],
+    S.[amount4],
     S.[Sign_of_amount4],
-    S.[amount 5],
+    S.[amount5],
     S.[Sign_of_amount5],
-    S.[amount 6],
+    S.[amount6],
     S.[Sign_of_amount6],
-    S.[amount 7],
+    S.[amount7],
     S.[Sign_of_amount7],
-    S.[amount 8],
+    S.[amount8],
     S.[Sign_of_amount8],
-    S.[amount 9],
+    S.[amount9],
     S.[Sign_of_amount9],
     S.[amount10],
     S.[Sign_of_amount10],
@@ -519,4 +470,179 @@ SELECT
     S.[amount18],
     S.[Sign_of_amount18],
     SPACE(60) AS [Breakdown Description]
+INTO [final].[yyy_95_LCR_DATA_FINAL]
 FROM raw.[00770_a_yyy_95_LCR_DATA_FINAL] AS S;
+
+-- 00770_d_Total_Amount_Update -- 
+/* Important update*/
+UPDATE final.[yyy_95_LCR_DATA_FINAL]
+SET
+    [Amount9]         = REPLICATE('0', 18),
+    [Sign_of_Amount9] = '+',
+    [Amount14]        = REPLICATE('0', 18),
+    [Sign_of_Amount14]= '+'
+WHERE
+    Account LIKE '11%';
+
+
+-- 00770_e_Breakdown_Amount_Update --
+UPDATE final.[yyy_95_LCR_DATA_FINAL]
+SET
+    [Amount1]          = REPLICATE('0', 18),
+    [Sign_of_Amount1]  = '+',
+    [Amount2]          = REPLICATE('0', 18),
+    [Sign_of_Amount2]  = '+',
+    [Amount3]          = REPLICATE('0', 18),
+    [Sign_of_Amount3]  = '+',
+    [Amount4]          = REPLICATE('0', 18),
+    [Sign_of_Amount4]  = '+',
+    [Amount5]          = REPLICATE('0', 18),
+    [Sign_of_Amount5]  = '+',
+    [Amount6]          = REPLICATE('0', 18),
+    [Sign_of_Amount6]  = '+',
+    [Amount7]          = REPLICATE('0', 18),
+    [Sign_of_Amount7]  = '+',
+    [Amount8]          = REPLICATE('0', 18),
+    [Sign_of_Amount8]  = '+',
+    [Amount9]          = REPLICATE('0', 18),
+    [Sign_of_Amount9]  = '+',
+    [Amount10]         = REPLICATE('0', 18),
+    [Sign_of_Amount10] = '+',
+    [Amount11]         = REPLICATE('0', 18),
+    [Sign_of_Amount11] = '+',
+    [Amount12]         = REPLICATE('0', 18),
+    [Sign_of_Amount12] = '+',
+    [Amount13]         = REPLICATE('0', 18),
+    [Sign_of_Amount13] = '+'
+WHERE
+    Account NOT LIKE '11%';
+
+
+-- 00780_a_yyy_95_LCR_DATA_FINAL_Len_concatenar --
+/*  Warning: Amounts from 19 to 27 are not created in any query. Perhaps some queries are missing. */
+UPDATE final.[yyy_95_LCR_DATA_FINAL]
+SET   [concatenar] = CONCAT(
+      [period],[entity_code],[Related_breakdown_number],[Chart],[Account],
+      [currencyaa],[country],[counterparty_country],[intercompany_codea],
+      [ITEM],[ITEM_CODE],[Link],
+      [Amount1],[Sign_of_Amount1],
+      [Amount2],[Sign_of_Amount2],
+      [Amount3],[Sign_of_Amount3],
+      [Amount4],[Sign_of_Amount4],
+      [Amount5],[Sign_of_Amount5],
+      [Amount6],[Sign_of_Amount6],
+      [Amount7],[Sign_of_Amount7],
+      [Amount8],[Sign_of_Amount8],
+      [Amount9],[Sign_of_Amount9],
+      [Amount10],[Sign_of_Amount10],
+      [Amount11],[Sign_of_Amount11],
+      [Amount12],[Sign_of_Amount12],
+      [Amount13],[Sign_of_Amount13],
+      [Amount14],[Sign_of_Amount14],
+      [Amount15],[Sign_of_Amount15],
+      [Amount16],[Sign_of_Amount16],
+      [Amount17],[Sign_of_Amount17],
+      [Amount18],[Sign_of_Amount18],
+      [Amount19],[Sign_of_Amount19],
+      [Amount20],[Sign_of_Amount20],
+      [Amount21],[Sign_of_Amount21],
+      [Amount22],[Sign_of_Amount22],
+      [Amount23],[Sign_of_Amount23],
+      [Amount24],[Sign_of_Amount24],
+      [Amount25],[Sign_of_Amount25],
+      [Amount26],[Sign_of_Amount26],
+      [Amount27],[Sign_of_Amount27],
+      [Porcentaje 1],[Sign_of_Porcentaje 1],
+      [Porcentaje 2],[Sign_of_Porcentaje 2],
+      [Porcentaje 3],[Sign_of_Porcentaje 3],
+      [Porcentaje 4],[Sign_of_Porcentaje 4],
+      [Porcentaje 5],[Sign_of_Porcentaje 5],
+      [Porcentaje 6],[Sign_of_Porcentaje 6],
+      [Porcentaje 7],[Sign_of_Porcentaje 7],
+      [Breakdown Description]);
+
+UPDATE final.[yyy_95_LCR_DATA_FINAL]
+SET length_concatenar = LEN(concatenar);
+
+
+-- !Visual Basic Module:  C_Breakdown_No() --
+
+/* Fist, 9999_ROW_SIRASI_ICIN is not used in Macro_1, so I create the database based in the Access File's query: */
+SELECT
+    F.period,
+    F.entity_code,
+    F.[Related_breakdown_number],
+    F.Chart,
+    F.Account,
+    F.currencyaa,
+    F.country,
+    F.[counterparty_country],
+    F.intercompany_codea,
+    F.ITEM,
+    F.ITEM_CODE,
+    F.Link,
+    F.[Amount1],  F.[Sign_of_Amount1],
+    F.[Amount2],  F.[Sign_of_Amount2],
+    F.[Amount3],  F.[Sign_of_Amount3],
+    F.[Amount4],  F.[Sign_of_Amount4],
+    F.[Amount5],  F.[Sign_of_Amount5],
+    F.[Amount6],  F.[Sign_of_Amount6],
+    F.[Amount7],  F.[Sign_of_Amount7],
+    F.[Amount8],  F.[Sign_of_Amount8],
+    F.[Amount9],  F.[Sign_of_Amount9],
+    F.[Amount10], F.[Sign_of_Amount10],
+    F.[Amount11], F.[Sign_of_Amount11],
+    F.[Amount12], F.[Sign_of_Amount12],
+    F.[Amount13], F.[Sign_of_Amount13],
+    F.[Amount14], F.[Sign_of_Amount14],
+    F.[Amount15], F.[Sign_of_Amount15],
+    F.[Amount16], F.[Sign_of_Amount16],
+    F.[Amount17], F.[Sign_of_Amount17],
+    F.[Amount18], F.[Sign_of_Amount18],
+    F.[Amount19], F.[Sign_of_Amount19],
+    F.[Amount20], F.[Sign_of_Amount20],
+    F.[Amount21], F.[Sign_of_Amount21],
+    F.[Amount22], F.[Sign_of_Amount22],
+    F.[Amount23], F.[Sign_of_Amount23],
+    F.[Amount24], F.[Sign_of_Amount24],
+    F.[Amount25], F.[Sign_of_Amount25],
+    F.[Amount26], F.[Sign_of_Amount26],
+    F.[Amount27], F.[Sign_of_Amount27],
+    F.[Porcentaje1], F.[Sign_of_Porcentaje1],
+    F.[Porcentaje2], F.[Sign_of_Porcentaje2],
+    F.[Porcentaje3], F.[Sign_of_Porcentaje3],
+    F.[Porcentaje4], F.[Sign_of_Porcentaje4],
+    F.[Porcentaje5], F.[Sign_of_Porcentaje5],
+    F.[Porcentaje6], F.[Sign_of_Porcentaje6],
+    F.[Porcentaje7], F.[Sign_of_Porcentaje7],
+    F.[Breakdown_Description],
+    F.concatenar,
+    F.length_concatenar
+FROM final.[yyy_95_LCR_DATA_FINAL] AS F
+ORDER BY
+    F.period,
+    F.entity_code,
+    F.[Related_breakdown_number],
+    F.Chart,
+    F.Account,
+    F.currencyaa,
+    F.country,
+    F.[counterparty_country],
+    F.intercompany_codea,
+    F.ITEM,
+    F.ITEM_CODE,
+    F.Link;
+
+
+/* After having the table 9999_ROW_SIRASI_ICIN, The Module C_Breakdown_No() can be executed.*/
+
+WITH c AS 
+(
+    SELECT
+        *,
+        rn = ROW_NUMBER() OVER (ORDER BY (SELECT 1))
+    FROM dbo.[9999_ROW_SIRASI_ICIN]
+)
+UPDATE 
+SET [Related_breakdown_number] = RIGHT('000000' + CAST(rn AS varchar(6)), 6);
+

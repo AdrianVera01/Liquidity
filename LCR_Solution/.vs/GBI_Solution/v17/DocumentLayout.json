@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\adria\\OneDrive\\Documentos\\Liquidity\\Liquidity\\LCR_Solution\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{28FEC493-8FC6-A52A-6129-B3C25A511A32}|GBI_LCR_Project\\GBI_LCR_Project.ssmssqlproj|C:\\Users\\adria\\OneDrive\\Documentos\\Liquidity\\Liquidity\\LCR_Solution\\GBI_LCR_Project\\LCR_Macro_1.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{28FEC493-8FC6-A52A-6129-B3C25A511A32}|GBI_LCR_Project\\GBI_LCR_Project.ssmssqlproj|solutionrelative:GBI_LCR_Project\\LCR_Macro_1.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +27,17 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LCR_Macro_1.sql - localhost\\SQLEXPRESS.GBI_LCR_LIQUIDITY (YADRIAN\\adria (53))",
+              "DocumentMoniker": "C:\\Users\\adria\\OneDrive\\Documentos\\Liquidity\\Liquidity\\LCR_Solution\\GBI_LCR_Project\\LCR_Macro_1.sql",
+              "RelativeDocumentMoniker": "GBI_LCR_Project\\LCR_Macro_1.sql",
+              "ToolTip": "LCR_Macro_1.sql - localhost\\SQLEXPRESS.GBI_LCR_LIQUIDITY (YADRIAN\\adria (53))",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-10-14T03:12:42.285Z",
+              "EditorCaption": " - localhost\\SQLEXPRESS.GBI_LCR_LIQUIDITY (YADRIAN\\adria (53))"
             }
           ]
         }
