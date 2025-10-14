@@ -1,18 +1,34 @@
 USE GBI_LCR_LIQUIDITY
 
--- 00100_a_Overwrite_Keys -- 
+-- Q 01: 0_a000_LCR_account_Mapping --
+/* It's just a query, but there is a table a000_LCR_account_Mapping. Maybe it is the same */ 
+SELECT
+    M.[Sequence],
+    M.[LCR_account],
+    M.[Group_2],
+    M.[Product_Number],
+    M.[Is_Product_Number_23000_23004],
+    M.[contract],
+    M.[KeyA],
+    M.[Any_Match],
+    M.[Sorgu_Final]
+FROM raw.[a000_LCR_Account_Mapping] AS M
+ORDER BY
+    M.[Sequence];
+
+--Q 02: 00100_a_Overwrite_Keys -- 
 UPDATE raw.yyy_30_BBVA_Financial_Statement_Additional SET raw.yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account = NULL
 WHERE (((raw.yyy_30_BBVA_Financial_Statement_Additional.Liquidity_LCR_Account) IS NOT NULL));
 
--- 00110_a_Update_Lookup_First_Mapping --
+-- Q 03:  00110_a_Update_Lookup_First_Mapping --
 UPDATE raw.a000_LCR_Account_Mapping 
 SET raw.a000_LCR_Account_Mapping.KeyA = (CASE WHEN [Group_2] Is Null THEN '*' ELSE [Group_2] END) + '_' + (CASE WHEN [Is_Product_Number_21095_21096] Is Null THEN '*' ELSE [Is_Product_Number_21095_21096] END) + '_' + (CASE WHEN [Product_Number] Is Null THEN '*' ELSE [Product_Number] END) + '_' + (CASE WHEN [Is_Product_Number_23000_23004] Is Null THEN '*' ELSE [Is_Product_Number_23000_23004] END) + '_' + (CASE WHEN [contract] Is Null THEN '*' ELSE [contract] END), raw.a000_LCR_Account_Mapping.Sorgu_Final = Null, raw.a000_LCR_Account_Mapping.Any_Match = Null;
 
--- Q 00200_a_Mother_Data_First_Mapping_SQLServer
+-- Q 04: 00200_a_Mother_Data_First_Mapping_SQLServer
 DELETE FROM raw.[yy_10_a_Mother_Data_First_Mapping];
 
 
--- 00200_b_Mother_Data_First_Mapping_SQLServer --
+-- Q 05 : 00200_b_Mother_Data_First_Mapping_SQLServer --
 /* It is a Query for visualization */
 SELECT
     F.[BBVA_Sequence_Distinct],
@@ -27,7 +43,7 @@ FROM raw.[yyy_30_BBVA_Financial_Statement] AS F;
 
 
 
--- 00200_c_Mother_Data_First_Mapping
+-- Q06: 00200_c_Mother_Data_First_Mapping
 INSERT INTO raw.[yy_10_a_Mother_Data_First_Mapping] 
 (
   DATA_SequenceB,
@@ -56,10 +72,10 @@ SELECT
 FROM raw.[00200_b_Mother_Data_First_Mapping] AS b;
 
 
--- 00210_a_Distinct_Mother_Data_First_Mapping --
+-- Q 07: 00210_a_Distinct_Mother_Data_First_Mapping --
 DELETE FROM raw.[yy_10_b_Distinct_Mother_Data_First_Mapping];
 
--- 00210_b_Distinct_Mother_Data_First_Mapping -- It's just a Query for Visualization
+-- Q 08: 00210_b_Distinct_Mother_Data_First_Mapping -- It's just a Query for Visualization
 
 SELECT
     fs.[BBVA_Sequence_Distinct]                                   AS [BBVA_Sequence_Distinct],
@@ -72,28 +88,7 @@ SELECT
     fs.[Contract]                                                 AS [Contract_B]
 FROM raw.[yyy_30_BBVA_Financial_Statement] AS fs;
 
--- A01_Primary : This is one of the functions in VBS --
-
-UPDATE DMD
-    SET DMD.Summary_KeyC = LAM.KeyA,
-        DMD.LCR_account_C = LAM.LCR_account
-    FROM raw.[yy_10_b_Distinct_Mother_Data_First_Mapping] DMD
-    INNER JOIN raw.[0_a000_LCR_account_Mapping] LAM
-        ON DMD.KeyC LIKE LAM.KeyA
-    WHERE DMD.Summary_KeyC IS NULL;
-  
-UPDATE LAM
-SET LAM.Any_Match = 'Yes'
-FROM raw.[0_a000_LCR_account_Mapping] LAM
-WHERE EXISTS (
-    SELECT 1 
-    FROM raw.[yy_10_b_Distinct_Mother_Data_First_Mapping] DMD
-    WHERE DMD.KeyC LIKE LAM.KeyA 
-    AND DMD.Summary_KeyC IS NULL
-);
-
-
--- 00210_c_First_Mapping_DATA_UPDATE --
+-- Q 09: 00210_c_First_Mapping_DATA_UPDATE -- 
 UPDATE FSA
 SET FSA.[Liquidity_LCR_Account] = DMDFM.[LCR_account_C]
 FROM raw.[yyy_30_BBVA_Financial_Statement_Additional] AS FSA
@@ -105,10 +100,12 @@ INNER JOIN raw.[yy_10_b_Distinct_Mother_Data_First_Mapping] AS DMDFM
   ON MDFM.[Keyb] = DMDFM.[KeyC]
 WHERE DMDFM.[LCR_account_C] IS NOT NULL;
 
---00750_a_yyy_90_LCR_DATA-- 
+
+-- Q 10: 00750_a_yyy_90_LCR_DATA-- 
 DELETE FROM raw.[yyy_90_LCR_DATA]
 
--- 00750_b_yyy_90_LCR_DATA: First version of Final LCR-- 
+
+-- Q 11: 00750_b_yyy_90_LCR_DATA: First version of Final LCR-- 
 INSERT INTO raw.[yyy_90_LCR_DATA] 
     (
     period,
@@ -211,7 +208,7 @@ GROUP BY
         ELSE N'0003' + REPLICATE(N' ',16)
     END;
 
--- 00750_c_yyy_90_LCR_DATA_Totals 
+-- Q 12: 00750_c_yyy_90_LCR_DATA_Totals 
 UPDATE raw.[yyy_90_LCR_DATA]
 SET
   Amount9  = COALESCE(Amount5,0) + COALESCE(Amount6,0) + COALESCE(Amount7,0) + COALESCE(Amount8,0),
@@ -219,7 +216,7 @@ SET
            + COALESCE(Amount5,0) + COALESCE(Amount6,0) + COALESCE(Amount7,0) + COALESCE(Amount8,0)
            + COALESCE(Amount10,0) + COALESCE(Amount11,0) + COALESCE(Amount12,0) + COALESCE(Amount13,0);
 
--- 00750_k01_Manual_Input_From_Jean_Paul:  It's just a Query for Visualization
+-- Q 13: 00750_k01_Manual_Input_From_Jean_Paul:  It's just a Query for Visualization
 SELECT 
     [b001_Manual_Input_From_Jean_Paul].Account,
     N'EUR' AS Currency1,
@@ -229,7 +226,7 @@ GROUP BY raw.b001_Manual_Input_From_Jean_Paul.Account;
 
 
 
--- 00750_k02_Manual_Input_From_Jean_Paul --
+-- Q 14: 00750_k02_Manual_Input_From_Jean_Paul --
 INSERT INTO raw.yyy_90_LCR_DATA
 (
     period,
@@ -265,11 +262,11 @@ FROM
     raw.[b001_Manual_Input_From_Jean_Paul_MODEL];
 
 
-    -- 00760_a_yyy_92_LCR_DATA --
+-- Q 15: 00760_a_yyy_92_LCR_DATA --
 DELETE FROM raw.[yyy_92_LCR_DATA]
 
 
--- 00760_b_yyy_92_LCR_DATA --
+-- Q 16: 00760_b_yyy_92_LCR_DATA --
 INSERT INTO raw.[yyy_92_LCR_DATA] (
     period,
     entity_code,
@@ -315,7 +312,7 @@ SELECT
     ITEM,
     ITEM_CODE,
     Link,
-    Amount1 as Amount1a,   -- aliases like "AS Amount1a" aren't needed for INSERT
+    Amount1 as Amount1a,
     Amount2,
     Amount3,
     Amount4,
@@ -336,7 +333,7 @@ SELECT
 FROM raw.[yyy_90_LCR_DATA];
 
 
---  00760_c_yyy_92_LCR_DATA_Update_Nulls --
+-- Q 17: 00760_c_yyy_92_LCR_DATA_Update_Nulls --
 UPDATE raw.yyy_92_LCR_DATA
 SET
     Amount1  = ISNULL(Amount1,  0),
@@ -358,7 +355,7 @@ SET
     Amount17 = ISNULL(Amount17, 0),
     Amount18 = ISNULL(Amount18, 0);
 
---  00760_d_yyy_90_LCR_DATA_Update_Is_Zero --
+-- Q18: 00760_d_yyy_90_LCR_DATA_Update_Is_Zero --
 UPDATE raw.[yyy_92_LCR_DATA]
 SET IsZero = CASE
                WHEN ISNULL(Amount1,0)=0  AND ISNULL(Amount2,0)=0  AND ISNULL(Amount3,0)=0  AND
@@ -369,7 +366,7 @@ SET IsZero = CASE
                     ISNULL(Amount16,0)=0 AND ISNULL(Amount17,0)=0 AND ISNULL(Amount18,0)=0
                THEN 'YES' ELSE 'NO'
              END;
--- 00770_a_yyy_95_LCR_DATA_FINAL --
+-- Q 19: 00770_a_yyy_95_LCR_DATA_FINAL --
 /* Important: This query is not called in any Macro, maybe it is executed manually
  I created the data base 00770_a_yyy_95_LCR_DATA_FINAL from this query. */
 SELECT 
@@ -429,10 +426,10 @@ FROM raw.[yyy_92_LCR_DATA] AS D
 WHERE D.IsZero = 'NO';
 
 
--- 00770_b_yyy_95_LCR_DATA_FINAL --
+-- Q 20: 00770_b_yyy_95_LCR_DATA_FINAL --
 DELETE FROM final.[yyy_95_LCR_DATA_FINAL];
 
--- 00770_c_yyy_95_LCR_DATA_FINAL --
+-- Q 21: 00770_c_yyy_95_LCR_DATA_FINAL --
 /* The INSERT INTO was changed for SELEC INTO, because It showed a Error */
 SELECT
     S.[period],
@@ -487,7 +484,7 @@ SELECT
 INTO [final].[yyy_95_LCR_DATA_FINAL]
 FROM raw.[00770_a_yyy_95_LCR_DATA_FINAL] AS S;
 
--- 00770_d_Total_Amount_Update -- 
+-- Q 22: 00770_d_Total_Amount_Update -- 
 /* Important update*/
 UPDATE final.[yyy_95_LCR_DATA_FINAL]
 SET
@@ -499,7 +496,7 @@ WHERE
     Account LIKE '11%';
 
 
--- 00770_e_Breakdown_Amount_Update --
+-- Q 23: 00770_e_Breakdown_Amount_Update --
 UPDATE final.[yyy_95_LCR_DATA_FINAL]
 SET
     [Amount1]          = REPLICATE('0', 18),
@@ -532,7 +529,7 @@ WHERE
     Account NOT LIKE '11%';
 
 
--- 00780_a_yyy_95_LCR_DATA_FINAL_Len_concatenar --
+-- Q 24: 00780_a_yyy_95_LCR_DATA_FINAL_Len_concatenar --
 /*  Warning: Amounts from 19 to 27 are not created in any query. Perhaps some queries are missing. */
 UPDATE final.[yyy_95_LCR_DATA_FINAL]
 SET   [concatenar] = CONCAT(
@@ -578,10 +575,9 @@ SET   [concatenar] = CONCAT(
 UPDATE final.[yyy_95_LCR_DATA_FINAL]
 SET length_concatenar = LEN(concatenar);
 
-
--- !Visual Basic Module:  C_Breakdown_No() --
-
-/* Fist, 9999_ROW_SIRASI_ICIN is not used in Macro_1, so I create the database based in the Access File's query: */
+-- Q 25: 9999_ROW_SIRASI_ICIN --
+/* ! DataBase required for Visual Basic Module:  C_Breakdown_No()
+ Fist, 9999_ROW_SIRASI_ICIN is not used in Macro_1, so I create the database based in the Access File's query: */
 SELECT
     F.period,
     F.entity_code,
@@ -648,15 +644,14 @@ ORDER BY
     F.Link;
 
 
-/* After having the table 9999_ROW_SIRASI_ICIN, The Module C_Breakdown_No() can be executed.*/
+-- Q26: Query1, Just Visualization --
 
-WITH c AS 
-(
-    SELECT
-        *,
-        rn = ROW_NUMBER() OVER (ORDER BY (SELECT 1))
-    FROM dbo.[9999_ROW_SIRASI_ICIN]
-)
-UPDATE 
-SET [Related_breakdown_number] = RIGHT('000000' + CAST(rn AS varchar(6)), 6);
+SELECT
+    L.Account,
+    L.currencyaa,
+    J.Amount
+FROM [raw].[yyy_90_LCR_DATA] L
+INNER JOIN [raw].[b001_Manual_Input_From_Jean_Paul] J
+    ON  L.Account    = J.Account
+    AND L.currencyaa = J.[Currency];
 

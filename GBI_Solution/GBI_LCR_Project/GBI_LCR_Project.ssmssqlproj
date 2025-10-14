@@ -45,6 +45,18 @@
           <AssociatedConnUserName />
           <FullPath>LCR_Macro_1_SIL.sql</FullPath>
         </FileNode>
+        <FileNode Name="LCR_Queries.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:localhost\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>localhost\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>LCR_Queries.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Modules_VBS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:localhost\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>localhost\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Modules_VBS.sql</FullPath>
+        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
