@@ -1,4 +1,4 @@
-USE GBI_LIQUIDITY
+USE GBI_LCR_LIQUIDITY
 
 
 -- 00100_a_Overwrite_Keys -- 
@@ -216,3 +216,249 @@ GROUP BY raw.b001_Manual_Input_From_Jean_Paul.Account;
 
 
 -- 00750_k02_Manual_Input_From_Jean_Paul --
+INSERT INTO raw.yyy_90_LCR_DATA
+(
+    period,
+    entity_code,
+    [Related_Breakdown_Number],
+    Chart,
+    Account,
+    currencyaa,
+    country,
+    [counterparty_country],
+    intercompany_codea,
+    ITEM,
+    ITEM_CODE,
+    Link,
+    Amount14
+)
+SELECT
+    raw.[b001_Manual_Input_From_Jean_Paul_MODEL].period,
+    raw.[b001_Manual_Input_From_Jean_Paul_MODEL].entity_code,
+    raw.[b001_Manual_Input_From_Jean_Paul_MODEL].[Related_Breakdown_Number],
+    raw.[b001_Manual_Input_From_Jean_Paul_MODEL].Chart,
+    raw.[00750_k01_Manual_Input_From_Jean_Paul].Account,
+    raw.[00750_k01_Manual_Input_From_Jean_Paul].Currency1,
+    raw.[b001_Manual_Input_From_Jean_Paul_MODEL].country,
+    raw.[b001_Manual_Input_From_Jean_Paul_MODEL].[counterparty_country],
+    raw.[b001_Manual_Input_From_Jean_Paul_MODEL].intercompany_codea,
+    raw.[b001_Manual_Input_From_Jean_Paul_MODEL].ITEM,
+    raw.[b001_Manual_Input_From_Jean_Paul_MODEL].ITEM_CODE,
+    raw.[b001_Manual_Input_From_Jean_Paul_MODEL].Link,
+    raw.[00750_k01_Manual_Input_From_Jean_Paul].SumOfAmount
+FROM
+    raw.[00750_k01_Manual_Input_From_Jean_Paul],
+    raw.[b001_Manual_Input_From_Jean_Paul_MODEL];
+
+
+    -- 00760_a_yyy_92_LCR_DATA --
+DELETE FROM raw.[yyy_92_LCR_DATA]
+
+
+-- 00760_b_yyy_92_LCR_DATA --
+INSERT INTO raw.[yyy_92_LCR_DATA] (
+    period,
+    entity_code,
+    [Related_Breakdown_Number],
+    Chart,
+    Account,
+    currencyaa,
+    country,
+    [counterparty_country],
+    intercompany_codea,
+    ITEM,
+    ITEM_CODE,
+    Link,
+    Amount1,
+    Amount2,
+    Amount3,
+    Amount4,
+    Amount5,
+    Amount6,
+    Amount7,
+    Amount8,
+    Amount9,
+    Amount10,
+    Amount11,
+    Amount12,
+    Amount13,
+    Amount14,
+    Amount15,
+    Amount16,
+    Amount17,
+    Amount18
+)
+SELECT
+    period,
+    entity_code,
+    [Related_Breakdown_Number],
+    Chart,
+    Account,
+    currencyaa,
+    country,
+    [counterparty_country],
+    intercompany_codea,
+    ITEM,
+    ITEM_CODE,
+    Link,
+    Amount1 as Amount1a,   -- aliases like "AS Amount1a" aren't needed for INSERT
+    Amount2,
+    Amount3,
+    Amount4,
+    Amount5,
+    Amount6,
+    Amount7,
+    Amount8,
+    Amount9,
+    Amount10,
+    Amount11,
+    Amount12,
+    Amount13,
+    Amount14,
+    Amount15,
+    Amount16,
+    Amount17,
+    Amount18
+FROM raw.[yyy_90_LCR_DATA];
+
+
+--  00760_c_yyy_92_LCR_DATA_Update_Nulls --
+UPDATE raw.yyy_92_LCR_DATA
+SET
+    Amount1  = ISNULL(Amount1,  0),
+    Amount2  = ISNULL(Amount2,  0),
+    Amount3  = ISNULL(Amount3,  0),
+    Amount4  = ISNULL(Amount4,  0),
+    Amount5  = ISNULL(Amount5,  0),
+    Amount6  = ISNULL(Amount6,  0),
+    Amount7  = ISNULL(Amount7,  0),
+    Amount8  = ISNULL(Amount8,  0),
+    Amount9  = ISNULL(Amount9,  0),
+    Amount10 = ISNULL(Amount10, 0),
+    Amount11 = ISNULL(Amount11, 0),
+    Amount12 = ISNULL(Amount12, 0),
+    Amount13 = ISNULL(Amount13, 0),
+    Amount14 = ISNULL(Amount14, 0),
+    Amount15 = ISNULL(Amount15, 0),
+    Amount16 = ISNULL(Amount16, 0),
+    Amount17 = ISNULL(Amount17, 0),
+    Amount18 = ISNULL(Amount18, 0);
+
+--  00760_d_yyy_90_LCR_DATA_Update_Is_Zero --
+UPDATE raw.[yyy_92_LCR_DATA]
+SET IsZero = CASE
+               WHEN ISNULL(Amount1,0)=0  AND ISNULL(Amount2,0)=0  AND ISNULL(Amount3,0)=0  AND
+                    ISNULL(Amount4,0)=0  AND ISNULL(Amount5,0)=0  AND ISNULL(Amount6,0)=0  AND
+                    ISNULL(Amount7,0)=0  AND ISNULL(Amount8,0)=0  AND ISNULL(Amount9,0)=0  AND
+                    ISNULL(Amount10,0)=0 AND ISNULL(Amount11,0)=0 AND ISNULL(Amount12,0)=0 AND
+                    ISNULL(Amount13,0)=0 AND ISNULL(Amount14,0)=0 AND ISNULL(Amount15,0)=0 AND
+                    ISNULL(Amount16,0)=0 AND ISNULL(Amount17,0)=0 AND ISNULL(Amount18,0)=0
+               THEN 'YES' ELSE 'NO'
+             END;
+
+-- 00770_b_yyy_95_LCR_DATA_FINAL --
+DELETE FROM raw.[yyy_95_LCR_DATA_FINAL];
+
+-- 00770_c_yyy_95_LCR_DATA_FINAL --
+INSERT INTO raw.yyy_95_LCR_DATA_FINAL (
+    period,
+    entity_code,
+    [Related Breakdown Number],
+    Chart,
+    Account,
+    currencyaa,
+    country,
+    [counterparty country],
+    intercompany_codea,
+    ITEM,
+    ITEM_CODE,
+    Link,
+    [amount 1],
+    [Sign of Amount 1],
+    [amount 2],
+    [Sign of Amount 2],
+    [amount 3],
+    [Sign of Amount 3],
+    [amount 4],
+    [Sign of Amount 4],
+    [amount 5],
+    [Sign of Amount 5],
+    [amount 6],
+    [Sign of Amount 6],
+    [amount 7],
+    [Sign of Amount 7],
+    [amount 8],
+    [Sign of Amount 8],
+    [amount 9],
+    [Sign of Amount 9],
+    [amount 10],
+    [Sign of Amount 10],
+    [amount 11],
+    [Sign of Amount 11],
+    [amount 12],
+    [Sign of Amount 12],
+    [amount 13],
+    [Sign of Amount 13],
+    [amount 14],
+    [Sign of Amount 14],
+    [amount 15],
+    [Sign of Amount 15],
+    [amount 16],
+    [Sign of Amount 16],
+    [amount 17],
+    [Sign of Amount 17],
+    [amount 18],
+    [Sign of Amount 18],
+    [Breakdown Description]
+)
+SELECT
+    S.period,
+    S.entity_code,
+    S.[Related Breakdown Number],
+    S.Chart,
+    S.Account,
+    S.currencyaa,
+    S.country,
+    S.[counterparty country],
+    S.intercompany_codea,
+    S.ITEM,
+    S.ITEM_CODE,
+    S.Link,
+    S.[amount 1],
+    S.[Sign of Amount 1],
+    S.[amount 2],
+    S.[Sign of Amount 2],
+    S.[amount 3],
+    S.[Sign of Amount 3],
+    S.[amount 4],
+    S.[Sign of Amount 4],
+    S.[amount 5],
+    S.[Sign of Amount 5],
+    S.[amount 6],
+    S.[Sign of Amount 6],
+    S.[amount 7],
+    S.[Sign of Amount 7],
+    S.[amount 8],
+    S.[Sign of Amount 8],
+    S.[amount 9],
+    S.[Sign of Amount 9],
+    S.[amount 10],
+    S.[Sign of Amount 10],
+    S.[amount 11],
+    S.[Sign of Amount 11],
+    S.[amount 12],
+    S.[Sign of Amount 12],
+    S.[amount 13],
+    S.[Sign of Amount 13],
+    S.[amount 14],
+    S.[Sign of Amount 14],
+    S.[amount 15],
+    S.[Sign of Amount 15],
+    S.[amount 16],
+    S.[Sign of Amount 16],
+    S.[amount 17],
+    S.[Sign of Amount 17],
+    S.[amount 18],
+    S.[Sign of Amount 18],
+    SPACE(60) AS [Breakdown Description]   -- same as String(60," ")
+FROM raw.[00770_a_yyy_95_LCR_DATA_FINAL] AS S;
