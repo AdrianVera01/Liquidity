@@ -1,0 +1,47 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\adria\\OneDrive\\Documentos\\Liquidity\\Liquidity\\GBI_Solution\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4979C7-722E-2A50-2BD2-1B1B1CCBDDE3}|LCR_EXECUTION\\LCR_EXECUTION.ssmssqlproj|C:\\Users\\adria\\OneDrive\\Documentos\\Liquidity\\Liquidity\\GBI_Solution\\LCR_EXECUTION\\LCR.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{6A4979C7-722E-2A50-2BD2-1B1B1CCBDDE3}|LCR_EXECUTION\\LCR_EXECUTION.ssmssqlproj|solutionrelative:LCR_EXECUTION\\LCR.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LCR.sql - localhost\\SQLEXPRESS.GBI_LCR_EXECUTION (YADRIAN\\adria (59))",
+              "DocumentMoniker": "C:\\Users\\adria\\OneDrive\\Documentos\\Liquidity\\Liquidity\\GBI_Solution\\LCR_EXECUTION\\LCR.sql",
+              "RelativeDocumentMoniker": "LCR_EXECUTION\\LCR.sql",
+              "ToolTip": "LCR.sql - localhost\\SQLEXPRESS.GBI_LCR_EXECUTION (YADRIAN\\adria (59))",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-10-28T16:31:38.113Z",
+              "EditorCaption": " - localhost\\SQLEXPRESS.GBI_LCR_EXECUTION (YADRIAN\\adria (59))"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

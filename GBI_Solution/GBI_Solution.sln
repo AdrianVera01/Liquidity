@@ -7,6 +7,8 @@ Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "GBI_LCR_Project", "GBI_LCR_
 EndProject
 Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "GBI_Inflows_Project", "GBI_Inflows_Project\GBI_Inflows_Project.ssmssqlproj", "{664CE94A-3CEA-E9C3-C38E-37F801C152BC}"
 EndProject
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "LCR_EXECUTION", "LCR_EXECUTION\LCR_EXECUTION.ssmssqlproj", "{6A4979C7-722E-2A50-2BD2-1B1B1CCBDDE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Default|Default = Default|Default
@@ -14,7 +16,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{28FEC493-8FC6-A52A-6129-B3C25A511A32}.Default|Default.ActiveCfg = Default
 		{664CE94A-3CEA-E9C3-C38E-37F801C152BC}.Default|Default.ActiveCfg = Default
-		{075E1CF8-7466-46C0-8A56-5907C73FFF58}.Default|Default.ActiveCfg = Default
+		{C4A0A10B-B5A8-4F16-AEF4-2CB216F3269C}.Default|Default.ActiveCfg = Default
+		{6A4979C7-722E-2A50-2BD2-1B1B1CCBDDE3}.Default|Default.ActiveCfg = Default
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
