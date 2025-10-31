@@ -31,13 +31,13 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LCR.sql - localhost\\SQLEXPRESS.GBI_LCR_EXECUTION (YADRIAN\\adria (59))",
+              "Title": "LCR.sql - localhost\\SQLEXPRESS.master (YADRIAN\\adria (54))",
               "DocumentMoniker": "C:\\Users\\adria\\OneDrive\\Documentos\\Liquidity\\Liquidity\\GBI_Solution\\LCR_EXECUTION\\LCR.sql",
               "RelativeDocumentMoniker": "LCR_EXECUTION\\LCR.sql",
-              "ToolTip": "LCR.sql - localhost\\SQLEXPRESS.GBI_LCR_EXECUTION (YADRIAN\\adria (59))",
+              "ToolTip": "LCR.sql - localhost\\SQLEXPRESS.master (YADRIAN\\adria (54))",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2025-10-28T16:31:38.113Z",
-              "EditorCaption": " - localhost\\SQLEXPRESS.GBI_LCR_EXECUTION (YADRIAN\\adria (59))"
+              "EditorCaption": " - localhost\\SQLEXPRESS.master (YADRIAN\\adria (54))"
             }
           ]
         }
