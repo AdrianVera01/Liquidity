@@ -77,6 +77,37 @@ SELECT
   CAST(b.[Contract_B]                                       AS nvarchar(50)) 
 FROM [MIDTABLES].[00200_b_Mother_Data_First_Mapping] AS b;
 
+-- Q 07: 00210_a_Distinct_Mother_Data_First_Mapping --
+-- DELETE FROM raw.[yy_10_b_Distinct_Mother_Data_First_Mapping];
+
+
+-- Q 08: 00210_b_Distinct_Mother_Data_First_Mapping -- It's just a Query for Visualization
+
+SELECT
+    fs.[BBVA_Sequence_Distinct]                                   AS [BBVA_Sequence_Distinct],
+    fs.[group2]                                                   AS [Group2_B],
+    CASE WHEN fs.[Product_Number] IN ('21095','21096')
+         THEN N'Yes' ELSE N'No' END                               AS [Is_Product_Number_21095_21096_B],
+    fs.[Product_Number]                                           AS [Product_Number_B],
+    CASE WHEN fs.[Product_Number] IN ('23000','23004')
+         THEN N'Yes' ELSE N'No' END                               AS [Is_Product_Number_23000_23004_B],
+    fs.[Contract]                                                 AS [Contract_B]
+INTO MIDTABLES.[yy_10_b_Distinct_Mother_Data_First_Mapping]
+FROM INPUTS.[yyy_30_BBVA_Financial_Statement] AS fs;
+
+-- Q 09: 00210_c_First_Mapping_DATA_UPDATE -- 
+UPDATE FSA
+SET FSA.[Liquidity_LCR_Account] = DMDFM.[LCR_account_C]
+FROM INPUTS.[yyy_30_BBVA_Financial_Statement_Additional] AS FSA
+INNER JOIN INPUTS.[yyy_30_BBVA_Financial_Statement]            AS FS
+  ON FSA.[BBVA_Sequence_Distinct] = fs.[BBVA_Sequence_Distinct]
+INNER JOIN INPUTS.[yy_10_a_Mother_Data_First_Mapping]          AS MDFM
+  ON FS.[BBVA_Sequence_Distinct] = MDFM.[DATA_SequenceB]
+INNER JOIN INPUTS.[yy_10_b_Distinct_Mother_Data_First_Mapping] AS DMDFM
+  ON MDFM.[Keyb] = DMDFM.[KeyC]
+WHERE DMDFM.[LCR_account_C] IS NOT NULL;
+
+
 --Q 10: 00750_a_yyy_90_LCR_DATA--
 -- It is uploaded for the structure. Changing the next query  00750_a_yyy_90_LCR_DATA wont be required as an Input 
 -- DELETE FROM raw.[yyy_90_LCR_DATA]
