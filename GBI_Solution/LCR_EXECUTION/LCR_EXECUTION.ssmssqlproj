@@ -21,17 +21,17 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
+        <FileNode Name="Alter_Tables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:YADRIAN:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>YADRIAN</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Alter_Tables.sql</FullPath>
+        </FileNode>
         <FileNode Name="LCR.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:YADRIAN:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>YADRIAN</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>LCR.sql</FullPath>
-        </FileNode>
-        <FileNode Name="SQLQuery2.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:YADRIAN:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>YADRIAN</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>SQLQuery2.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>

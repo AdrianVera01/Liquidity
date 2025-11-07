@@ -11,7 +11,7 @@ SELECT
     M.[Is_Product_Number_23000_23004],
     M.[contract],
     M.[KeyA],
-    M.[Any_Match],
+    M.[Any_Match],[0_a000_LCR_account_Mapping]
     M.[Sorgu_Final]
 INTO MIDTABLES.[0_a000_LCR_account_Mapping]
 FROM INPUTS.[a000_LCR_Account_Mapping] AS M
@@ -81,19 +81,18 @@ FROM [MIDTABLES].[00200_b_Mother_Data_First_Mapping] AS b;
 -- DELETE FROM raw.[yy_10_b_Distinct_Mother_Data_First_Mapping];
 
 
--- Q 08: 00210_b_Distinct_Mother_Data_First_Mapping -- It's just a Query for Visualization
+-- Q 08: 00210_b_Distinct_Mother_Data_First_Mapping --
+INSERT INTO INPUTS.[yy_10_b_Distinct_Mother_Data_First_Mapping]
+( KeyC, Group2_C, [Is_Product_Number_21095_21096_C], [Product_Number_C], [Is_Product_Number_23000_23004_C], Contract_C )
+SELECT DISTINCT Keyb,
+Group2_B,
+[Is_Product_Number_21095_21096_B],
+[Product_Number_B],
+[Is_Product_Number_23000_23004_B],
+Contract_B
+FROM INPUTS.yy_10_a_Mother_Data_First_Mapping
+--GROUP BY Keyb, Group2_B, [Is_Product_Number_21095_21096_B], [Product_Number_B], [Is_Product_Number_23000_23004_B], Contract_B;
 
-SELECT
-    fs.[BBVA_Sequence_Distinct]                                   AS [BBVA_Sequence_Distinct],
-    fs.[group2]                                                   AS [Group2_B],
-    CASE WHEN fs.[Product_Number] IN ('21095','21096')
-         THEN N'Yes' ELSE N'No' END                               AS [Is_Product_Number_21095_21096_B],
-    fs.[Product_Number]                                           AS [Product_Number_B],
-    CASE WHEN fs.[Product_Number] IN ('23000','23004')
-         THEN N'Yes' ELSE N'No' END                               AS [Is_Product_Number_23000_23004_B],
-    fs.[Contract]                                                 AS [Contract_B]
-INTO MIDTABLES.[yy_10_b_Distinct_Mother_Data_First_Mapping]
-FROM INPUTS.[yyy_30_BBVA_Financial_Statement] AS fs;
 
 -- Q 09: 00210_c_First_Mapping_DATA_UPDATE -- 
 UPDATE FSA
@@ -116,7 +115,7 @@ WHERE DMDFM.[LCR_account_C] IS NOT NULL;
 SELECT
     CONVERT(char(6), fs.[Date], 112)                            AS period,                     -- YYYYMM
     70501                                                       AS entity_code,
-    N'000001'                                                   AS [Related_Breakdown_Number],
+    N'000001'                                                   AS [Related_Breakdown_Number], -- SERGIO
     N'M8'                                                       AS Chart,
     fsa.[Liquidity_LCR_Account]                                AS Account,
   
@@ -469,7 +468,7 @@ SET
     [Amount14]        = REPLICATE('0', 18),
     [Sign_of_Amount14]= '+'
 WHERE
-    Account LIKE '11%';
+    Account LIKE '11%';      -- SERGIO
 
 
 -- Q 23: 00770_e_Breakdown_Amount_Update --
