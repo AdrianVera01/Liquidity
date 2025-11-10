@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
-<SqlWorkbenchSqlProject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="GBI_Inflows_Project">
+<SqlWorkbenchSqlProject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="INFLOWS_EXECUTION">
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
-        <ConnectionNode Name="localhost\SQLEXPRESS:YADRIAN\adria">
-          <Created>2025-10-13T21:41:54.6617061-05:00</Created>
+        <ConnectionNode Name="YADRIAN:YADRIAN\adria">
+          <Created>2025-11-10T09:02:05.3705079-05:00</Created>
           <Type>SQL</Type>
-          <Server>localhost\SQLEXPRESS</Server>
+          <Server>YADRIAN</Server>
           <UserName />
           <Authentication>Windows Authentication</Authentication>
           <InitialDB>master</InitialDB>
           <LoginTimeout>15</LoginTimeout>
           <TrustServerCertificate>False</TrustServerCertificate>
           <EncryptionOption>False</EncryptionOption>
-          <ExecutionTimeout>30</ExecutionTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
           <ConnectionProtocol>NotSpecified</ConnectionProtocol>
           <ApplicationName>SQL Server Management Studio</ApplicationName>
         </ConnectionNode>
@@ -21,11 +21,11 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
-        <FileNode Name="DB_Config.sql">
+        <FileNode Name="Inflows.sql">
           <AssociatedConnectionMoniker />
           <AssociatedConnSrvName />
           <AssociatedConnUserName />
-          <FullPath>DB_Config.sql</FullPath>
+          <FullPath>Inflows.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>

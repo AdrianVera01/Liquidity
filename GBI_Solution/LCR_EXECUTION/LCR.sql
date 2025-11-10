@@ -195,7 +195,7 @@ SELECT
     INPUTS.[b001_Manual_Input_From_Jean_Paul].Account,
     N'EUR' AS Currency1,
     Sum(b001_Manual_Input_From_Jean_Paul.Amount) AS SumOfAmount
-INTO MIDTABLES.[00750_k01_Manual_Input_From_Jean_Paul]
+--INTO MIDTABLES.[00750_k01_Manual_Input_From_Jean_Paul]
 FROM INPUTS.b001_Manual_Input_From_Jean_Paul
 GROUP BY INPUTS.b001_Manual_Input_From_Jean_Paul.Account;
 
