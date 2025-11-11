@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\adria\\OneDrive\\Documentos\\GBI\\Liquidity\\GBI_Solution\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{F7C67693-893D-1C70-AE4D-7833074259B7}|INFLOWS_EXECUTION\\INFLOWS_EXECUTION.ssmssqlproj|C:\\Users\\adria\\OneDrive\\Documentos\\GBI\\Liquidity\\GBI_Solution\\INFLOWS_EXECUTION\\Inflows.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
-      "RelativeMoniker": "D:0:0:{F7C67693-893D-1C70-AE4D-7833074259B7}|INFLOWS_EXECUTION\\INFLOWS_EXECUTION.ssmssqlproj|solutionrelative:INFLOWS_EXECUTION\\Inflows.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6A4979C7-722E-2A50-2BD2-1B1B1CCBDDE3}|LCR_EXECUTION\\LCR_EXECUTION.ssmssqlproj|C:\\Users\\adria\\OneDrive\\Documentos\\GBI\\Liquidity\\GBI_Solution\\LCR_EXECUTION\\LCR.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
-      "RelativeMoniker": "D:0:0:{6A4979C7-722E-2A50-2BD2-1B1B1CCBDDE3}|LCR_EXECUTION\\LCR_EXECUTION.ssmssqlproj|solutionrelative:LCR_EXECUTION\\LCR.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,28 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LCR.sql - YADRIAN.master (YADRIAN\\adria (59))",
-              "DocumentMoniker": "C:\\Users\\adria\\OneDrive\\Documentos\\GBI\\Liquidity\\GBI_Solution\\LCR_EXECUTION\\LCR.sql",
-              "RelativeDocumentMoniker": "LCR_EXECUTION\\LCR.sql",
-              "ToolTip": "LCR.sql - YADRIAN.master (YADRIAN\\adria (59))",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-11-10T14:04:03.64Z",
-              "EditorCaption": " - YADRIAN.master (YADRIAN\\adria (59))"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Inflows.sql - YADRIAN.GBI_INFLOWS_EXECUTION (YADRIAN\\adria (54))",
-              "DocumentMoniker": "C:\\Users\\adria\\OneDrive\\Documentos\\GBI\\Liquidity\\GBI_Solution\\INFLOWS_EXECUTION\\Inflows.sql",
-              "RelativeDocumentMoniker": "INFLOWS_EXECUTION\\Inflows.sql",
-              "ToolTip": "Inflows.sql - YADRIAN.GBI_INFLOWS_EXECUTION (YADRIAN\\adria (54))",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-11-10T14:02:07.644Z",
-              "EditorCaption": " - YADRIAN.GBI_INFLOWS_EXECUTION (YADRIAN\\adria (54))"
             }
           ]
         }
