@@ -118,6 +118,20 @@ FROM eval
 WHERE IsCompliant = 0
 ORDER BY period, entity_code, Account, AmountNo;    -- final output returns violations and the reason for them
 
+-- test (NB revert after):
+UPDATE OUTPUTS.yyy_95_LCR_DATA_FINAL
+SET amount9 = '000000000000000020' , sign_of_amount9 = '+'
+WHERE Account = 15400
+  AND entity_code = 70501;
+
+-- re run the VALIDATOR
+
+-- revert of test
+UPDATE OUTPUTS.yyy_95_LCR_DATA_FINAL
+SET amount9 = '000000000000000000'
+WHERE Account = 15400
+  AND entity_code = 70501;
+
 
 
 
