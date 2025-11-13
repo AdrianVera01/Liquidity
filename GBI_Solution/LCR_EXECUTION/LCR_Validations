@@ -1,1 +1,28 @@
 -- code to try and write validation checks for the LCR accounts and amounts reported
+
+IF OBJECT_ID('dbo.LCR_ValidationRule','U') IS NULL
+CREATE TABLE dbo.LCR_ValidationRule (
+  RuleId         int IDENTITY(1,1) PRIMARY KEY,
+  Reporting      varchar(20) NOT NULL DEFAULT('LCR'),
+  Account        int         NOT NULL,
+  AmountNo       int         NOT NULL,           -- 1..27
+  ExpectedCode   tinyint     NOT NULL,           -- 0..4 (see meanings below)
+  MustBeReported bit         NOT NULL DEFAULT(0),-- force non-zero
+  CONSTRAINT UQ_LCR_Rule UNIQUE (Reporting, Account, AmountNo)
+);
+/*
+Codes:
+0 = must NOT be reported -> amount must be 18 zeros
+1 = may be positive or negative (optional unless MustBeReported=1)
+2 = auto-calculated -> must NOT be reported (18 zeros)
+3 = must be NEGATIVE  (non-zero and Sign='-')
+4 = must be POSITIVE  (non-zero and Sign='+')
+*/
+-- Example: 15400 -> amounts 1..13 not reported; 14 must be positive and present
+DELETE FROM dbo.LCR_ValidationRule WHERE Account=15400;
+INSERT dbo.LCR_ValidationRule (Account, AmountNo, ExpectedCode)
+SELECT 15400, v.n, 0 FROM (VALUES
+(1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13)) v(n);
+INSERT dbo.LCR_ValidationRule (Account, AmountNo, ExpectedCode, MustBeReported)
+VALUES (15400, 14, 4, 1);
+
