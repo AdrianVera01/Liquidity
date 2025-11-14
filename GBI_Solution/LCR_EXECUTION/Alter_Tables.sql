@@ -1,5 +1,28 @@
 USE GBI_LCR_EXECUTION
 
+EXEC sp_rename 'OUTPUTS.yyy_95_LCR_DATA_FINAL.[Amount_1]', 'Amount1', 'COLUMN';
+EXEC sp_rename 'OUTPUTS.yyy_95_LCR_DATA_FINAL.[Amount_2]', 'Amount2', 'COLUMN';
+EXEC sp_rename 'OUTPUTS.yyy_95_LCR_DATA_FINAL.[Amount_3]', 'Amount3', 'COLUMN';
+EXEC sp_rename 'OUTPUTS.yyy_95_LCR_DATA_FINAL.[Amount_4]', 'Amount4', 'COLUMN';
+EXEC sp_rename 'OUTPUTS.yyy_95_LCR_DATA_FINAL.[Amount_5]', 'Amount5', 'COLUMN';
+EXEC sp_rename 'OUTPUTS.yyy_95_LCR_DATA_FINAL.[Amount_6]', 'Amount6', 'COLUMN';
+EXEC sp_rename 'OUTPUTS.yyy_95_LCR_DATA_FINAL.[Amount_7]', 'Amount7', 'COLUMN';
+EXEC sp_rename 'OUTPUTS.yyy_95_LCR_DATA_FINAL.[Amount_8]', 'Amount8', 'COLUMN';
+EXEC sp_rename 'OUTPUTS.yyy_95_LCR_DATA_FINAL.[Amount_9]', 'Amount9', 'COLUMN';
+EXEC sp_rename 'OUTPUTS.yyy_95_LCR_DATA_FINAL.[Amount_10]', 'Amount10', 'COLUMN';
+EXEC sp_rename 'OUTPUTS.yyy_95_LCR_DATA_FINAL.[Amount_11]', 'Amount11', 'COLUMN';
+EXEC sp_rename 'OUTPUTS.yyy_95_LCR_DATA_FINAL.[Amount_12]', 'Amount12', 'COLUMN';
+EXEC sp_rename 'OUTPUTS.yyy_95_LCR_DATA_FINAL.[Amount_13]', 'Amount13', 'COLUMN';
+EXEC sp_rename 'OUTPUTS.yyy_95_LCR_DATA_FINAL.[Amount_14]', 'Amount14', 'COLUMN';
+
+
+
+
+
+
+
+
+
 ALTER TABLE OUTPUTS.yyy_90_LCR_DATA 
 ALTER COLUMN Amount1 Decimal(18,2) NULL;
 

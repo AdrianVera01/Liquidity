@@ -33,11 +33,11 @@
           <AssociatedConnUserName />
           <FullPath>LCR.sql</FullPath>
         </FileNode>
-        <FileNode Name="SQLQuery2.sql">
+        <FileNode Name="LCR_Validations.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:YADRIAN:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>YADRIAN</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>SQLQuery2.sql</FullPath>
+          <FullPath>LCR_Validations.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
