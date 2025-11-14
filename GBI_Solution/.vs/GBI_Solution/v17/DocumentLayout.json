@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\adria\\OneDrive\\Documentos\\GBI\\Liquidity\\GBI_Solution\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4979C7-722E-2A50-2BD2-1B1B1CCBDDE3}|LCR_EXECUTION\\LCR_EXECUTION.ssmssqlproj|C:\\Users\\adria\\OneDrive\\Documentos\\GBI\\Liquidity\\GBI_Solution\\LCR_EXECUTION\\LCR.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{6A4979C7-722E-2A50-2BD2-1B1B1CCBDDE3}|LCR_EXECUTION\\LCR_EXECUTION.ssmssqlproj|solutionrelative:LCR_EXECUTION\\LCR.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7C67693-893D-1C70-AE4D-7833074259B7}|INFLOWS_EXECUTION\\INFLOWS_EXECUTION.ssmssqlproj|C:\\Users\\adria\\OneDrive\\Documentos\\GBI\\Liquidity\\GBI_Solution\\INFLOWS_EXECUTION\\Tables_LCR.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{F7C67693-893D-1C70-AE4D-7833074259B7}|INFLOWS_EXECUTION\\INFLOWS_EXECUTION.ssmssqlproj|solutionrelative:INFLOWS_EXECUTION\\Tables_LCR.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7C67693-893D-1C70-AE4D-7833074259B7}|INFLOWS_EXECUTION\\INFLOWS_EXECUTION.ssmssqlproj|C:\\Users\\adria\\OneDrive\\Documentos\\GBI\\Liquidity\\GBI_Solution\\INFLOWS_EXECUTION\\Inflows.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{F7C67693-893D-1C70-AE4D-7833074259B7}|INFLOWS_EXECUTION\\INFLOWS_EXECUTION.ssmssqlproj|solutionrelative:INFLOWS_EXECUTION\\Inflows.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +35,39 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LCR.sql - not connected",
+              "DocumentMoniker": "C:\\Users\\adria\\OneDrive\\Documentos\\GBI\\Liquidity\\GBI_Solution\\LCR_EXECUTION\\LCR.sql",
+              "RelativeDocumentMoniker": "LCR_EXECUTION\\LCR.sql",
+              "ToolTip": "LCR.sql - not connected",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-11-12T14:36:45.684Z",
+              "EditorCaption": " - not connected"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Tables_LCR.sql - not connected",
+              "DocumentMoniker": "C:\\Users\\adria\\OneDrive\\Documentos\\GBI\\Liquidity\\GBI_Solution\\INFLOWS_EXECUTION\\Tables_LCR.sql",
+              "RelativeDocumentMoniker": "INFLOWS_EXECUTION\\Tables_LCR.sql",
+              "ToolTip": "Tables_LCR.sql - not connected",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-11-12T14:28:21.803Z",
+              "EditorCaption": " - not connected"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Inflows.sql - not connected",
+              "DocumentMoniker": "C:\\Users\\adria\\OneDrive\\Documentos\\GBI\\Liquidity\\GBI_Solution\\INFLOWS_EXECUTION\\Inflows.sql",
+              "RelativeDocumentMoniker": "INFLOWS_EXECUTION\\Inflows.sql",
+              "ToolTip": "Inflows.sql - not connected",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-11-12T14:26:18.376Z",
+              "EditorCaption": " - not connected"
             }
           ]
         }

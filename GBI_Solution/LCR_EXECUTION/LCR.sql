@@ -93,6 +93,24 @@ Contract_B
 FROM INPUTS.yy_10_a_Mother_Data_First_Mapping
 --GROUP BY Keyb, Group2_B, [Is_Product_Number_21095_21096_B], [Product_Number_B], [Is_Product_Number_23000_23004_B], Contract_B;
 
+--  Q08.5 : Module A01_Primary() 
+/* Here is used the module for updating the table, IDK why, but we have to */
+ALTER TABLE [INPUTS].[yy_10_b_Distinct_Mother_Data_First_Mapping]
+ADD
+    -- change the names and types below to what you need
+    Summary_KeyC            NVARCHAR(200)   NULL,
+    LCR_account_C           INT             NULL,
+    Any_Match               NVARCHAR(20)    NULL;
+
+UPDATE d
+SET d.Summary_KeyC = m.KeyA,
+    d.LCR_account_C = m.LCR_account,
+    d.Any_Match = 'Yes'
+FROM [MIDTABLES].[yy_10_b_Distinct_Mother_Data_First_Mapping] d
+INNER JOIN [MIDTABLES].[0_a000_LCR_Accounts_Mapping] m 
+    ON d.KeyC LIKE m.KeyA
+WHERE d.Summary_KeyC IS NULL;
+
 
 -- Q 09: 00210_c_First_Mapping_DATA_UPDATE -- 
 UPDATE FSA

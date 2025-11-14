@@ -160,3 +160,112 @@ INNER JOIN [MIDTABLES].[yy_10_a_Mother_Data_First_Mapping] AS a
 INNER JOIN [MIDTABLES].[yy_10_b_Distinct_Mother_Data_First_Mapping] AS d
     ON a.KeyB = d.KeyC
 WHERE d.inflow_Account_C IS NOT NULL;
+
+
+-- Q10 : 00750_a_yyy_90_LCR_DATA
+--DELETE FROM yyy_90_LCR_DATA;
+
+-- Q11 : 00750_b_yyy_90_LCR_DATA
+SELECT
+    -- Year([date]) & Format(Month([date]),"00")
+    CONVERT(char(6), fs.[Date], 112) AS period,
+    70501 AS entity_code,
+    '000001' AS Related_Breakdown_Number,
+    'M8' AS Chart,
+    fsa.Liquidity_LCR_Account AS Account,
+    CASE
+        WHEN fs.Currency IN ('EUR','USD','TRY','MXN','GBP') THEN fs.Currency
+        ELSE 'RES'
+    END AS currencyaa,
+    REPLICATE(' ', 2) AS country,
+    REPLICATE(' ', 2) AS counterparty_country,
+    CASE
+        WHEN fs.intercompany_code IS NULL THEN REPLICATE(' ', 5)
+        ELSE fs.intercompany_code
+    END AS intercompany_codea,
+    -- IIf([Maturity Date] Is Not Null Or [contract]="Card no. 8904",'VCT2','    ')
+    CASE
+        WHEN fs.Maturity_Date IS NOT NULL
+             OR fs.contract = 'Card no. 8904'
+            THEN 'VCT2'
+        ELSE REPLICATE(' ', 4)
+    END AS ITEM,
+    -- the long nested IIf() for ITEM_CODE
+    CASE
+        WHEN fs.contract = 'Card no. 8904' THEN '0003' + REPLICATE(' ', 16)
+        WHEN fs.Maturity_Date IS NULL THEN REPLICATE(' ', 20)
+        WHEN DATEDIFF(DAY, fs.[Date], fs.Maturity_Date) <= 184 THEN '0001' + REPLICATE(' ', 16)
+        WHEN DATEDIFF(DAY, fs.[Date], fs.Maturity_Date) <= 365 THEN '0002' + REPLICATE(' ', 16)
+        ELSE '0003' + REPLICATE(' ', 16)
+    END AS ITEM_CODE,
+    REPLICATE('0', 11) AS Link,
+    0 AS Amount1,
+    -- Sum(IIf([FINREP Sector] In ("GG"),1,0)*[Principle (Eur)])
+    SUM(CASE WHEN fs.Finrep_Sector IN ('GG') THEN fs.Principle_Eur ELSE 0 END) AS Amount2,
+    SUM(CASE WHEN fs.Finrep_Sector IN ('CI') THEN fs.Principle_Eur ELSE 0 END) AS Amount3,
+    0 AS Amount4,
+    0 AS Amount5,
+    0 AS Amount6,
+    0 AS Amount7,
+    SUM(CASE WHEN fs.Finrep_Sector IN ('OFC') THEN fs.Principle_Eur ELSE 0 END) AS Amount8,
+    0 AS Amount9,
+    -- NFC not 2500
+    SUM(
+        CASE
+            WHEN fs.Finrep_Sector IN ('NFC')
+             AND (fs.Industry_Number IS NULL OR fs.Industry_Number NOT IN ('2500'))
+                THEN fs.Principle_Eur
+            ELSE 0
+        END
+    ) AS Amount10,
+    0 AS Amount11,
+    -- NFC 2500
+    SUM(
+        CASE
+            WHEN fs.Finrep_Sector IN ('NFC')
+             AND fs.Industry_Number IN ('2500')
+                THEN fs.Principle_Eur
+            ELSE 0
+        END
+    ) AS Amount12,
+    SUM(CASE WHEN fs.Finrep_Sector IN ('Households') THEN fs.Principle_Eur ELSE 0 END) AS Amount13,
+    0 AS Amount14,
+    0 AS Amount15,
+    0 AS Amount16,
+    0 AS Amount17,
+    0 AS Amount18
+INTO [OUTPUTS].[yyy_90_LCR_DATA]
+FROM [INPUTS].[yyy_30_BBVA_Financial_Statement] AS fs
+INNER JOIN [INPUTS].[yyy_30_BBVA_Financial_Statement_Additional] AS fsa
+    ON fs.BBVA_Sequence_Distinct = fsa.BBVA_Sequence_Distinct
+WHERE fsa.Liquidity_LCR_Account IS NOT NULL
+GROUP BY
+    CONVERT(char(6), fs.[Date], 112),
+    fsa.Liquidity_LCR_Account,
+    CASE
+        WHEN fs.Currency IN ('EUR','USD','TRY','MXN','GBP') THEN fs.Currency
+        ELSE 'RES'
+    END,
+    CASE
+        WHEN fs.intercompany_code IS NULL THEN REPLICATE(' ', 5)
+        ELSE fs.intercompany_code
+    END,
+    CASE
+        WHEN fs.Maturity_Date IS NOT NULL
+             OR fs.contract = 'Card no. 8904'
+            THEN 'VCT2'
+        ELSE REPLICATE(' ', 4)
+    END,
+    CASE
+        WHEN fs.contract = 'Card no. 8904' THEN '0003' + REPLICATE(' ', 16)
+        WHEN fs.Maturity_Date IS NULL THEN REPLICATE(' ', 20)
+        WHEN DATEDIFF(DAY, fs.[Date], fs.Maturity_Date) <= 184 THEN '0001' + REPLICATE(' ', 16)
+        WHEN DATEDIFF(DAY, fs.[Date], fs.Maturity_Date) <= 365 THEN '0002' + REPLICATE(' ', 16)
+        ELSE '0003' + REPLICATE(' ', 16)
+    END;
+
+
+-- Q12 : 
+UPDATE [OUTPUTS].yyy_90_LCR_DATA 
+SET yyy_90_LCR_DATA.Amount9 = [amount5]+[amount6]+[amount7]+[amount8], 
+    yyy_90_LCR_DATA.Amount14 = [amount1]+[amount2]+[amount3]+[amount4]+([amount5]+[amount6]+[amount7]+[amount8])+[amount10]+[amount11]+[amount12]+[amount13];

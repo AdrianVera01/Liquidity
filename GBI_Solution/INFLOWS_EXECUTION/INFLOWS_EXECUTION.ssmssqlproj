@@ -27,6 +27,12 @@
           <AssociatedConnUserName />
           <FullPath>Inflows.sql</FullPath>
         </FileNode>
+        <FileNode Name="Tables_LCR.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:YADRIAN:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>YADRIAN</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Tables_LCR.sql</FullPath>
+        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
